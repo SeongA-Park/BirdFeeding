@@ -33,7 +33,6 @@ public class StageInfo : MonoBehaviour
 
         }
 
-        // 디버그용
         PlayerPrefs.DeleteAll();
 
         isSaved = PlayerPrefs.HasKey("Cleared_stage");

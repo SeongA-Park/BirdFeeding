@@ -16,6 +16,7 @@ public class CharController : MonoBehaviour
     public bool isLoopNext = true;
     public bool isAbleSeed = false;
     public int clrSeedCnt = 0;
+    public AudioClip eatSeed;
 
     public Grid grid;
     
@@ -27,7 +28,7 @@ public class CharController : MonoBehaviour
     private BtnPanelManager panelManager;
     private GameManager gameManager;
     private StageInfo stageInfo;
-
+    private AudioSource audio;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,7 @@ public class CharController : MonoBehaviour
         panelManager = GameObject.FindGameObjectWithTag("btnPanel").GetComponent<BtnPanelManager>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         stageInfo = GameObject.FindGameObjectWithTag("StageManager").GetComponent<StageInfo>();
+        audio = this.GetComponent<AudioSource>();
 
     }
 
@@ -195,6 +197,8 @@ public class CharController : MonoBehaviour
         if(isAbleSeed)
         {
             Destroy(curSeed);
+            audio.clip = eatSeed;
+            audio.Play();
             clrSeedCnt++; 
 
             if(stageInfo.seedAmount[stageInfo.curSelectedStage] == clrSeedCnt)

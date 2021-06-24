@@ -28,7 +28,7 @@ public class ForSelectStage : MonoBehaviour
         }
         else
         {
-            for (int i = stageInfo.clearedStage; i < 15; i++)
+            for (int i = stageInfo.clearedStage+1; i < 15; i++)
             {
                 stageBtn[i].interactable = false;
             }
